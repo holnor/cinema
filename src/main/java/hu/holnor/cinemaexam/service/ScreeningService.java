@@ -34,7 +34,7 @@ public class ScreeningService {
     }
 
     public List<ScreeningListItem> getAllScreenings() {
-        List<Screening> screenings = screeningRepository.findAll();
+        List<Screening> screenings = screeningRepository.findAllByOrderByScreeningDateTimeDesc();
         return screenings.stream()
                 .map(ScreeningListItem::new).toList();
     }
