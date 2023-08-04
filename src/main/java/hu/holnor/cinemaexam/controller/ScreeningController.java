@@ -1,5 +1,6 @@
 package hu.holnor.cinemaexam.controller;
 
+import hu.holnor.cinemaexam.dto.incomming.ScreeningListItem;
 import hu.holnor.cinemaexam.dto.outgoing.CreateScreeningCommand;
 import hu.holnor.cinemaexam.service.ScreeningService;
 import hu.holnor.cinemaexam.validator.CreateScreeningCommandValidator;
@@ -8,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/screenings")
@@ -30,6 +33,11 @@ public class ScreeningController {
     public ResponseEntity<Void> createScreening(@RequestBody @Valid CreateScreeningCommand command) {
         screeningService.createScreening(command);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ScreeningListItem>>getAllScreenings(){
+        return new ResponseEntity<>(screeningService.getAllScreenings(), HttpStatus.OK);
     }
 }
 
