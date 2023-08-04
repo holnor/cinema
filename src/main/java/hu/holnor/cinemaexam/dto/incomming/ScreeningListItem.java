@@ -19,6 +19,6 @@ public class ScreeningListItem {
         this.screeningDateTime = screening.getScreeningDateTime().toString();
         this.totalSeats = screening.getTotalSeats();
         this.freeSeats = screening.getTotalSeats();
-        this.imgUrl = imgUrl;
+        this.imgUrl = screening.getImgUrl();
     }
 }
