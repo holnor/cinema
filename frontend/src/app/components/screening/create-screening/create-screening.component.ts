@@ -9,22 +9,26 @@ import {ScreeningService} from "../../../service/screening.service";
 })
 export class CreateScreeningComponent {
   createScreeningForm: FormGroup;
+  isSubmitted = false;
 
 
   constructor(private formBuilder: FormBuilder, private screeningService: ScreeningService) {
     this.createScreeningForm = this.formBuilder.group({
-      movieTitle: ['', Validators.required],
+      movieTitle: ['', [Validators.required, Validators.minLength(3)]],
       screeningDateTime: ['', Validators.required],
       totalSeats: [0, Validators.required],
-      imgUrl: ['', Validators.required]
+      imgUrl: ['']
     })
   }
 
   onSubmit() {
     this.screeningService.createScreening(this.createScreeningForm.value).subscribe({
-      next: value => {}
+      error: value => {
+      },
+      complete: () => {
+        this.createScreeningForm.reset();
+        this.isSubmitted = true;
+      }
     })
   }
-
-
 }

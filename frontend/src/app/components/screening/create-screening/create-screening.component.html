@@ -5,8 +5,14 @@
       formControlName="movieTitle"
       type="text"
       class="form-control"
-      id="movie-title">
+      id="movie-title"
+      [ngClass]="{'is-invalid' : createScreeningForm.get('movieTitle').invalid && createScreeningForm.get('movieTitle').touched}">
   </div>
+  <small
+    *ngIf="createScreeningForm?.get('movieTitle').invalid && createScreeningForm.get('movieTitle').touched"
+    class="error-msg text-danger"
+  >Movie title cannot be empty
+  </small>
   <div class="mb-3">
     <label for="screening-time" class="form-label">Screening time</label>
     <input
@@ -31,5 +37,12 @@
       class="form-control"
       id="img-url">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button
+    [disabled]="createScreeningForm.invalid"
+    type="submit" class="btn btn-primary">Submit
+  </button>
+  <div
+    *ngIf="isSubmitted"
+    class="submit-feedback text-success">Form was submitted
+  </div>
 </form>
