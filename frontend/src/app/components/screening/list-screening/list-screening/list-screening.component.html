@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Screening Time</th>
+    <th scope="col">Total Seats</th>
+    <th scope="col">Free Seats</th>
+    <th scope="col">Image</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let screening of screenings">
+    <td>{{ screening.movieTitle }}</td>
+    <td>{{ screening.screeningDateTime}}</td>
+    <td>{{ screening.totalSeats }}</td>
+    <td>{{ screening.freeSeats }}</td>
+    <td><img [src]="screening.imgUrl" alt=""></td>
+  </tr>
+  </tbody>
+</table>

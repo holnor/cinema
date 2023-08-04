@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ScreeningService} from "../../../service/screening.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-screening',
@@ -12,7 +13,7 @@ export class CreateScreeningComponent {
   isSubmitted = false;
 
 
-  constructor(private formBuilder: FormBuilder, private screeningService: ScreeningService) {
+  constructor(private formBuilder: FormBuilder, private screeningService: ScreeningService, private router:Router) {
     this.createScreeningForm = this.formBuilder.group({
       movieTitle: ['', [Validators.required, Validators.minLength(3)]],
       screeningDateTime: ['', Validators.required],
@@ -28,6 +29,7 @@ export class CreateScreeningComponent {
       complete: () => {
         this.createScreeningForm.reset();
         this.isSubmitted = true;
+        this.router.navigate(['list-screenings'])
       }
     })
   }
