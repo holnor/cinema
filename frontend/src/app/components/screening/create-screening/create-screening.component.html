@@ -1,0 +1,35 @@
+<form [formGroup]="createScreeningForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="movie-title" class="form-label">Movie Title</label>
+    <input
+      formControlName="movieTitle"
+      type="text"
+      class="form-control"
+      id="movie-title">
+  </div>
+  <div class="mb-3">
+    <label for="screening-time" class="form-label">Screening time</label>
+    <input
+      formControlName="screeningDateTime"
+      type="datetime-local"
+      class="form-control"
+      id="screening-time">
+  </div>
+  <div class="mb-3">
+    <label for="total-seats" class="form-label">Available Seats</label>
+    <input
+      formControlName="totalSeats"
+      type="number"
+      class="form-control"
+      id="total-seats">
+  </div>
+  <div class="mb-3">
+    <label for="img-url" class="form-label">Image Url</label>
+    <input
+      formControlName="imgUrl"
+      type="text"
+      class="form-control"
+      id="img-url">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
