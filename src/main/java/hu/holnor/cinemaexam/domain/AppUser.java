@@ -18,11 +18,6 @@ public class AppUser {
     private Long id;
 
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_screening_junction",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "screening_id")}
-    )
-    private List<Screening> screenings = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> screenings = new ArrayList<>();
 }
