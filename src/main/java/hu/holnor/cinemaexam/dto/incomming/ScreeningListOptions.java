@@ -7,9 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ScreeningListOptions {
+    private Long id;
     private String movieTitle;
 
     public ScreeningListOptions(Screening screening) {
+        this.id = screening.getId();
         this.movieTitle = screening.getMovieTitle();
     }
 }

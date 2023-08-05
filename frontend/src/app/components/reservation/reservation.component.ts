@@ -10,6 +10,8 @@ import {ScreenListOptionsModel} from "../../model/screen-list-options.model";
 export class ReservationComponent implements OnInit{
 
   screeningListOptions: ScreenListOptionsModel[] = [];
+  selectedScreeningId:number;
+  availableSeats:number;
 
   constructor(private reservationService:ReservationService) {
   }
@@ -20,4 +22,10 @@ export class ReservationComponent implements OnInit{
     })
   }
 
+  onOptionSelected(event:any) {
+    this.selectedScreeningId = event.target.value;
+    this.reservationService.getAvailableSeats(this.selectedScreeningId).subscribe({
+      next: value => this.availableSeats = value
+    })
+  }
 }

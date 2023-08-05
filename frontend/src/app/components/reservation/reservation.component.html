@@ -3,15 +3,19 @@
     <label for="user-name" class="form-label">Enter Your Name</label>
     <input type="text" class="form-control" id="user-name" required>
   </div>
-  <select class="form-select" aria-label="Default select example" required>
-    <option selected>Select Screening to make reservation for</option>
-    <option value="1">One</option>
+  <select
+    (change)="onOptionSelected($event)"
+    class="form-select" aria-label="Default select example" required>
+    <option selected disabled>Select Screening to make reservation for</option>
+    <option
+      *ngFor="let screening of screeningListOptions; let i = index" [value]="screening.id"
+      >{{ screening.movieTitle }}</option>
   </select>
   <div>
     <label for="seats" class="form-label">How Many Seats would You Reserve?</label>
     <input type="number" class="form-control" id="seats" required>
   </div>
-<small>Available seats for selected screening: <span></span></small>
+<small>Available seats for selected screening: <span>{{availableSeats}}</span></small>
   <br>
   <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>

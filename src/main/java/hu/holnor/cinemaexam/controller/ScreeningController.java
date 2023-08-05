@@ -2,6 +2,7 @@ package hu.holnor.cinemaexam.controller;
 
 import hu.holnor.cinemaexam.dto.incomming.ScreeningListItem;
 import hu.holnor.cinemaexam.dto.outgoing.CreateScreeningCommand;
+import hu.holnor.cinemaexam.service.ReservationService;
 import hu.holnor.cinemaexam.service.ScreeningService;
 import hu.holnor.cinemaexam.validator.CreateScreeningCommandValidator;
 import jakarta.validation.Valid;

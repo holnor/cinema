@@ -14,9 +14,12 @@ public class Reservation {
     @Column(name = "registration_id")
     private Long id;
 
+    private Integer seatsReserved;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser user;
+
     @ManyToOne
     @JoinColumn(name = "screening_id")
     private Screening screening;

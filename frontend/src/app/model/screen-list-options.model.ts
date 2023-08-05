@@ -1,4 +1,4 @@
-export interface ScreenListOptionsModel{
-    movieTitle:string;
-
+export interface ScreenListOptionsModel {
+  id: number;
+  movieTitle: string;
 }

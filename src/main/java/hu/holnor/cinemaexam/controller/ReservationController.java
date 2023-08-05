@@ -4,10 +4,7 @@ import hu.holnor.cinemaexam.dto.incomming.ScreeningListOptions;
 import hu.holnor.cinemaexam.service.ReservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +20,10 @@ public class ReservationController {
     @GetMapping("options")
     public ResponseEntity<List<ScreeningListOptions>> getScreeningListOptions(){
        return new ResponseEntity<>(reservationService.getScreeningListOptions(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/seats")
+    public ResponseEntity<Integer>getAvailableSeats(@PathVariable Long id){
+        return new ResponseEntity<>(reservationService.getAvailableSeats(id), HttpStatus.OK);
     }
 }
